@@ -1,0 +1,18 @@
+services:
+  rag-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./kb:/app/kb
+      - chroma_data:/app/chroma_data
+    restart: unless-stopped
+    networks:
+      - 123_default
+
+volumes:
+  chroma_data:
+
+networks:
+  123_default:
+    external: true
